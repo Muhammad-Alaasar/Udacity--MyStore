@@ -1,2 +1,4 @@
-<app-header></app-header>
-<app-product-item ></app-product-item>
+<!-- <ul>
+    <li>{{product.name}}</li>
+</ul> -->
+<app-product-item  *ngFor="let product of products" [product]="product"></app-product-item>

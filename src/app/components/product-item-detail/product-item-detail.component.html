@@ -1,1 +1,26 @@
-<p>product-item-detail works!</p>
+<div class="detail-container">
+    <img src={{product.url}} alt="">
+    <div class="detail-item">
+        <h3>{{product.name}}</h3>
+        <p>${{product.price}}</p>
+        <p>{{product.description}}</p>
+        <form action="" #productForm="ngForm" (ngSubmit)="addToCart()">
+            <select class="select-input" name="quntity" [(ngModel)]="quntity">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+            <br>
+            <button class="select-input" type="submit">Add to Cart</button>
+        </form>
+        <a class="back-link" routerLink="/">Back to productlist</a>
+    </div>
+
+</div>

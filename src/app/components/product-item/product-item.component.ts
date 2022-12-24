@@ -8,10 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ProductItemComponent implements OnInit {
 
 @Input() product: any;
+quntity :string = "1";
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addToCart(product:any){
+    console.log(parseInt(this.quntity), product)
+    alert("Added to cart")
   }
 
 }

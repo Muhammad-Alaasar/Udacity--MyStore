@@ -13,6 +13,7 @@ img {
     justify-content: center;
     align-items: center;
     margin-top: 64px;
+    margin-bottom: 64px;
 }
 
 .detail-item {

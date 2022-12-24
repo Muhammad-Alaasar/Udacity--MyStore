@@ -30,8 +30,10 @@ export class ProductItemDetailComponent implements OnInit {
     })
   }
 
-  addToCart(){
-
+  addToCart(product:any){
+    // console.log({ ...product, 
+    //   quntity: this.quntity });
+    
   }
 
 }

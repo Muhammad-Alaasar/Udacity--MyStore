@@ -4,7 +4,7 @@
         <h3>{{product.name}}</h3>
         <p>${{product.price}}</p>
         <p>{{product.description}}</p>
-        <form action="" #productForm="ngForm" (ngSubmit)="addToCart()">
+        <form action="" #productForm="ngForm" (ngSubmit)="addToCart(product)">
             <select class="select-input" name="quntity" [(ngModel)]="quntity">
                 <option value="1">1</option>
                 <option value="2">2</option>

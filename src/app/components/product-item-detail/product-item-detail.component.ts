@@ -21,7 +21,7 @@ export class ProductItemDetailComponent implements OnInit {
     url: '',
     description: ''
   }
-  quntity: any = 1;
+  quntity: number|string = 1;
 
   ngOnInit(): void {
     this.productsService.getproducts().subscribe(data => {

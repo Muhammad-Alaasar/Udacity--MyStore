@@ -10,17 +10,18 @@ export class ProductsService {
 
   cartProducts: Product[] = []
 
-  constructor(private httpClient:HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  getproducts() :Observable<Product[]>{
+  getproducts(): Observable<Product[]> {
     return this.httpClient.get<Product[]>("assets/data.json")
   }
 
-  addToCart(product: Product){
-    this.cartProducts.push(product)
+  addToCart(product: Product) {
+    !this.cartProducts.some(cartProduct => cartProduct.id === product.id) 
+    && this.cartProducts.push(product)
   }
 
-  getCartProducts(){
+  getCartProducts() {
     return this.cartProducts
   }
 

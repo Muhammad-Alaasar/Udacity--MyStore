@@ -21,7 +21,7 @@ export class ProductItemDetailComponent implements OnInit {
     url: '',
     description: ''
   }
-  quntity: number|string = 1;
+  quntity: string = "1";
 
   ngOnInit(): void {
     this.productsService.getproducts().subscribe(data => {
@@ -30,10 +30,14 @@ export class ProductItemDetailComponent implements OnInit {
     })
   }
 
-  addToCart(product:any){
-    // console.log({ ...product, 
-    //   quntity: this.quntity });
-    
+  addToCart(product: any) {
+    console.log({ ...product, quntity: parseInt(this.quntity) })
+
+    this.productsService.addToCart({
+      ...product,
+      quntity: parseInt(this.quntity)
+    })
+    alert("Added to cart")
   }
 
 }

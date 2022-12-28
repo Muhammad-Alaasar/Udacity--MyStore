@@ -9,20 +9,47 @@
             <div class="cart-item-details">
                 <h4>{{product.name}}</h4>
                 <p>${{product.price}}</p>
-                <p>Amount: <input class="number-input" type="number" name="product.quntity" (ngModelChange)="checkTotal()" [(ngModel)]="product.quntity" [value]="product.quntity" id=""></p>
+                <p>Amount: <input class="number-input" type="number" [(ngModel)]="product.quntity" (ngModelChange)="checkTotal()" id=""></p>
                 <button (click)="removeProduct(product.id)">Delete</button>
             </div>
         </div>
         <h3>Total:${{total.toFixed(2)}}</h3>
     </div>
-    <form action="" class="form-margin">
+    <form action="" class="form-margin" #userForm="ngForm" (ngSubmit)="onSubmit()">
         <label for="fullname">Full Name</label><br><br>
-        <input type="text" name="fullname" id="" placeholder="(minimum 3 characters)"><br><br>
+        <input
+        type="text"
+        name="fullname"
+        [(ngModel)]="fullname"
+        placeholder="(minimum 3 characters)"
+        minlength="3"
+        >
+        <br><br>
         <label for="address">Address</label><br><br>
-        <input type="text" name="address" id="" placeholder="(minimum 6 characters)"><br><br>
-        <label for="credit-cart">Credit Cart Number</label><br><br>
-        <input type="number" name="credit-cart" id="" placeholder="(16-digit number)"><br><br>
+        <input
+        type="text"
+        name="address"
+        [(ngModel)]="address"
+        placeholder="(minimum 6 characters)"
+        minlength="6"
+        required
+        >
+        <br><br>
+        <label for="creditCard">Credit Cart Number</label><br><br>
+        <input
+        type="number"
+        name="creditCard"
+        [(ngModel)]="creditCard"
+        placeholder="(16-digit number)"
+        max="9999999999999999"
+        min="1000000000000000"
+        required
+        >
+        <br><br>
         <small>We'll never share your payment details with anyone else.</small><br><br><br>
-        <button type="submit">Submit</button>
+        <button
+        type="submit"
+        [disabled]="userForm.invalid"
+        >Submit</button>
     </form>
 </div>

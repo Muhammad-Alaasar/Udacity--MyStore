@@ -9,6 +9,7 @@ import { Product } from '../interfaces/product.interface';
 export class ProductsService {
 
   cartProducts: Product[] = []
+  userInfo: object = {}
 
   constructor(private httpClient: HttpClient) { }
 
@@ -24,5 +25,17 @@ export class ProductsService {
   getCartProducts() {
     return this.cartProducts
   }
+  
+  removeProduct(productID:number) {
+    this.cartProducts = this.cartProducts.filter((p: Product) => p.id !== productID)
+    return this.cartProducts
+  }
 
+  setUserInfo(user: object){
+    this.userInfo = user;
+    this.cartProducts = []
+  }
+  getUserInfo(){
+    return this.userInfo
+  }
 }

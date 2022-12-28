@@ -19,11 +19,7 @@ export class CartComponent implements OnInit {
   constructor(private productService: ProductsService, private route:Router) { }
 
   ngOnInit(): void {
-    // console.log(this.productService.getCartProducts(), this.cartProducts)
     this.cartProducts = this.productService.getCartProducts()
-    // this.cartProducts.map(p => {
-    //   this.total += (p.price * (p.quntity ? p.quntity : 1))
-    // })
     this.checkTotal()
   }
 

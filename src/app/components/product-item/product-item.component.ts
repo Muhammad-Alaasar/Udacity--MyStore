@@ -9,7 +9,13 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductItemComponent implements OnInit {
 
-  @Input() product: any 
+  @Input() product: Product = {
+    id: 0,
+    name: '',
+    price: 0,
+    url: '',
+    description: ''
+  }
   
   quntity: string = "1";
 
@@ -18,7 +24,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addToCart(product: any) {
+  addToCart(product: Product) {
     console.log({ ...product, quntity: parseInt(this.quntity) })
 
     this.productsService.addToCart({

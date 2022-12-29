@@ -18,30 +18,34 @@ export class ProductsService {
     return this.httpClient.get<Product[]>("assets/data.json")
   }
 
-  getProductByID(id: number) {
-    this.getProducts().subscribe(data => {this.products = data})
-    return this.products.filter((product: Product) => product.id === id)[0]
+  // getProductByID(id: number): Product {
+  //   this.getProducts().subscribe(data => {
+  //     this.products = data;
+  //   })
+
+  //   return this.products.filter((product: Product) => product.id === id)[0]
+  // }
+
+  addToCart(product: Product): void {
+    !this.cartProducts.some(cartProduct => cartProduct.id === product.id)
+      && this.cartProducts.push(product)
+      this.products = this.products.filter(p => p.id !== product.id)
   }
 
-  addToCart(product: Product) {
-    !this.cartProducts.some(cartProduct => cartProduct.id === product.id) 
-    && this.cartProducts.push(product)
-  }
-
-  getCartProducts() {
+  getCartProducts(): Product[] {
     return this.cartProducts
   }
-  
-  removeProduct(productID:number) {
+
+  removeProduct(productID: number): Product[] {
     this.cartProducts = this.cartProducts.filter((p: Product) => p.id !== productID)
     return this.cartProducts
   }
 
-  setUserInfo(user: object){
+  setUserInfo(user: object) {
     this.userInfo = user;
     this.cartProducts = []
   }
-  getUserInfo(){
+  getUserInfo() {
     return this.userInfo
   }
 }

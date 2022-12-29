@@ -24,16 +24,14 @@ export class ProductItemDetailComponent implements OnInit {
   quntity: string = "1";
 
   ngOnInit(): void {
-    // this.productsService.getProducts().subscribe(data => {
-    //   this.products = data
-    //   this.product = this.products.filter((product: Product) => product.id === parseInt(this.id))[0]      
-    // })
-    this.product = this.productsService.getProductByID(parseInt(this.id))
+    this.productsService.getProducts().subscribe(data => {
+      this.products = data
+      this.product = this.products.filter((product: Product) => product.id === parseInt(this.id))[0]      
+    })
+    // this.product = this.productsService.getProductByID(parseInt(this.id))    
   }
 
   addToCart(product: Product) {
-    console.log({ ...product, quntity: parseInt(this.quntity) })
-
     this.productsService.addToCart({
       ...product,
       quntity: parseInt(this.quntity)

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from 'src/app/interfaces/product.interface';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -16,6 +16,7 @@ export class ProductItemComponent implements OnInit {
     url: '',
     description: ''
   }
+  @Output() marked: EventEmitter<Product> = new EventEmitter
   
   quntity: string = "1";
 
@@ -25,8 +26,8 @@ export class ProductItemComponent implements OnInit {
   }
 
   addToCart(product: Product) {
-    console.log({ ...product, quntity: parseInt(this.quntity) })
-
+    // console.log({ ...product, quntity: parseInt(this.quntity) })
+    this.marked.emit(product)
     this.productsService.addToCart({
       ...product,
       quntity: parseInt(this.quntity)
